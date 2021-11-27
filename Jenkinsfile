@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages{
-        stage ('Init'){
+        stage ('Build'){
           steps {
             sh 'mvn clean package' //скрипт запускающий maven-сборку нашего пакета
           }
@@ -11,11 +11,6 @@ pipeline {
                 echo 'Archiving...' //укажем, что при успешном завершении билда, выдать сообщение, что происходит архивация
                 archiveArtifacts artifacts: '**/target/*.war' //И запаковать наш проект в файл war
             }
-          }
-        }
-        stage ('Build'){
-          steps {
-            echo "Build step..."
           }
         }
         stage ('Deploy'){
