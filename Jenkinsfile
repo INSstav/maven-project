@@ -13,9 +13,9 @@ pipeline {
             }
           }
         }
-        stage ('Deploy'){
-          steps {
-            echo "Deploy step..."
+        stage ('Deploy to staging'){
+          steps { // вызовем ранее созданную джобу, которая задеплоит наш пакет на тестовую среду
+            build job: 'deploy_to_staging'
           }
         }
     }
