@@ -18,5 +18,10 @@ pipeline {
             build job: 'deploy_to_staging'
           }
         }
+        stage ('Deploy to prod'){
+          steps { // вызовем ранее созданную джобу, которая задеплоит наш пакет на проакшен
+            build job: 'deploy_to_prod'
+          }
+        }
     }
 }
