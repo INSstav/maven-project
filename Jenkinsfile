@@ -21,7 +21,7 @@ pipeline {
             parallel { //Оба деплоя будут выполняться параллельно
                 stage ('Deploy to staging'){
                   steps {
-                    sh "sh **/target/*.war /home/ivan_sapronov/programs/tomcat-staging/webapps"
+                    sh "cp **/target/*.war /home/ivan_sapronov/programs/tomcat-staging/webapps"
                     // build job: 'deploy_to_staging' // вызовем ранее созданную джобу
                   }
                 }
@@ -32,7 +32,7 @@ pipeline {
 //                         //если в эти 5 дней никто не нажмёт кнопку подтверждения, то джоба выполнится автоматически
 //                         input message: 'Approve prod deployment?'
 //                     }
-                    sh "sh **/target/*.war /home/ivan_sapronov/programs/tomcat-prod/webapps"
+                    sh "cp **/target/*.war /home/ivan_sapronov/programs/tomcat-prod/webapps"
                     //build job: 'deploy_to_prod' // вызовем ранее созданную джобу, которая задеплоит наш пакет на проакшен
                   }
                 }
