@@ -27,11 +27,11 @@ pipeline {
                 }
                 stage ('Deploy to prod'){
                   steps {
-                    //эта функция задаёт ожидание в 5 дней подтверждения от пользователя перед запуском джобы
-                    timeout(time:5, unit:'DAYS') {
-                        //если в эти 5 дней никто не нажмёт кнопку подтверждения, то джоба выполнится автоматически
-                        input message: 'Approve prod deployment?'
-                    }
+//                     //эта функция задаёт ожидание в 5 дней подтверждения от пользователя перед запуском джобы
+//                     timeout(time:5, unit:'DAYS') {
+//                         //если в эти 5 дней никто не нажмёт кнопку подтверждения, то джоба выполнится автоматически
+//                         input message: 'Approve prod deployment?'
+//                     }
                     sh "ch **/target/*.war /home/ivan_sapronov/programs/tomcat-prod/webapps"
                     //build job: 'deploy_to_prod' // вызовем ранее созданную джобу, которая задеплоит наш пакет на проакшен
                   }
